@@ -39,7 +39,47 @@ git clone https://github.com/EduardoCruzAlejandro/literatura.git
 cd literatura
 
 ### 2. Configurar la base de datos
+
 En el archivo src/main/resources/application.properties, configura la conexión a tu base de datos PostgreSQL:
+
+```properties```
+spring.datasource.url=jdbc:postgresql://localhost/literatura_db
+spring.datasource.username=usuario
+spring.datasource.password=contraseña
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+Asegúrate de crear la base de datos literatura_db en PostgreSQL o modificar el nombre de la base de datos en la configuración si es necesario.
+
+### 3. Instalar dependencias
+
+Ejecuta el siguiente comando para instalar todas las dependencias del proyecto:
+
+```bash```
+mvn clean install
+
+### 4. Ejecutar la aplicación
+
+Para ejecutar el proyecto, puedes usar Maven o tu IDE:
+
+```bash```
+mvn spring-boot:run
+
+### Estructura del proyecto
+El proyecto sigue una estructura de capas común en aplicaciones basadas en Spring:
+
+- **model:** Contiene las clases Autor y Libro, así como los registros de datos (Datos, DatosAutor, DatosLibro).
+- **repository:** Contiene las interfaces AutorRepository y LibroRepository para la interacción con la base de datos.
+- **service:** Contiene las clases de servicio ConsumoAPI y ConvierteDatos para manejar la comunicación con la API de Gutendex y la conversión de datos JSON.
+- **principal:** Contiene la clase Principal, que maneja la lógica de la interfaz de línea de comandos.
+- **LiteraturaApplication:** Clase principal para ejecutar la aplicación Spring Boot.
+
+### Licencia 
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+
+
+
 
 
 
